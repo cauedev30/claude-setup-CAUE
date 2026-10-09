@@ -41,3 +41,4 @@
 - [Falar e commitar em pt-BR](falar-ptbr-commits-ptbr.md) — toda resposta em português, inclusive relatório de fim de task; mensagem de commit em pt-BR
 - [Skill curriculo-camaleao](skill-curriculo-camaleao.md) — global desde 2026-10-08 (dv-dev1/claude-setup); candidato.md ainda é do Daniel (apêndice, ele monta a base dele depois); MiKTeX instalado e testado, PDF funciona
 - [Posicionamento: AI Full Stack Engineer](posicionamento-ai-full-stack-engineer.md) — desde 08/10 no GitHub/LinkedIn; cargo GeniAI = Generative AI Engineer; pipeline de LPs fora do material público; leia o que está no ar antes de editar
+- [Repo claude-setup-CAUE](claude-setup-caue-repo.md) — backup do setup do Claude, PRIVADO (memórias têm dado de cliente); `exportar.ps1 -Publicar` atualiza, `instalar.ps1` restaura (`-Amigo` sem dados pessoais); winget/plugins/MCP do instalador ainda sem teste real
