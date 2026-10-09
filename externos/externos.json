@@ -1,0 +1,8 @@
+[
+    {
+        "nome":  "obsidian-second-brain",
+        "destino":  ".claude/skills/obsidian-second-brain",
+        "repo":  "https://github.com/eugeniughelbur/obsidian-second-brain",
+        "commit":  "bf63932d73e50de334fe46eabfb72cf18f7239bd"
+    }
+]

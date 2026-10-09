@@ -1,0 +1,98 @@
+% Modelo base — Currículo Camaleão
+% Use o preâmbulo abaixo SEM alterar a estrutura. Substitua apenas o conteúdo
+% entre os marcadores de seção (%% =========================).
+% Regras de formatação por trás deste preâmbulo: ver regras-ats.md.
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=black
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlist[itemize]{leftmargin=1.3em, itemsep=0.2em}
+
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+  []
+
+\titlespacing*{\section}{0pt}{1em}{0.3em}
+
+\begin{document}
+
+\textbf{\Large [NOME COMPLETO]}
+
+[Cidade] - [Estado], [País] \\
+Telefone: [+55 XX XXXXX-XXXX] \\
+Email: [email@email.com] \\
+LinkedIn: https://linkedin.com/in/[perfil] \\
+GitHub: https://github.com/[usuario]  % omita se não informado
+
+% =========================
+\section*{Resumo Profissional}
+
+[3-4 linhas densas em keywords relevantes para a vaga]
+
+% =========================
+\section*{Experiência Profissional}
+
+\textbf{[Empresa]} \\
+Cargo: [Cargo adaptado à vaga] \\
+Período: [MM/AAAA -- MM/AAAA] \\
+Local: [Cidade, Estado]
+
+\begin{itemize}
+\item [Bullet CAR com keyword da vaga e resultado quantificado]
+\item [Bullet CAR com keyword da vaga e resultado quantificado]
+\item [Bullet CAR com keyword da vaga e resultado quantificado]
+\item [Bullet CAR com keyword da vaga e resultado quantificado]
+\end{itemize}
+
+% --- replicar para outras experiências ---
+
+% =========================
+\section*{Competências Técnicas}
+
+\textbf{Linguagens:} [...] \\
+\textbf{Backend:} [...] \\
+\textbf{Frontend:} [...] \\
+\textbf{Banco de Dados:} [...] \\
+\textbf{Ferramentas:} [...] \\
+\textbf{Metodologias:} [...]
+
+% =========================
+\section*{Formação Acadêmica}
+
+\textbf{[Instituição]} \\
+Curso: [Nome do Curso] \\
+Período: [MM/AAAA -- MM/AAAA] \\
+Status: [Em andamento / Concluído]
+
+% =========================
+\section*{Certificações}
+
+[Nome da Certificação (Instituição)] \\
+[Nome da Certificação (Instituição)]
+
+% =========================
+\section*{Idiomas}
+
+Português: Nativo \\
+Inglês: [Nível]  % omita se não informado
+
+\end{document}

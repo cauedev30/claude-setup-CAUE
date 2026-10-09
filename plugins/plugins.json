@@ -1,0 +1,30 @@
+{
+    "marketplaces":  [
+                         {
+                             "nome":  "claude-plugins-official",
+                             "source":  {
+                                            "source":  "github",
+                                            "repo":  "anthropics/claude-plugins-official"
+                                        }
+                         },
+                         {
+                             "nome":  "superpowers-dev",
+                             "source":  {
+                                            "source":  "github",
+                                            "repo":  "obra/superpowers"
+                                        }
+                         }
+                     ],
+    "plugins":  [
+                    {
+                        "id":  "frontend-design@claude-plugins-official",
+                        "versao":  "315c4e48967d",
+                        "commit":  "315c4e48967d9541c29c3c656441dded353ca7aa"
+                    },
+                    {
+                        "id":  "superpowers@superpowers-dev",
+                        "versao":  "6.1.1",
+                        "commit":  "d884ae04edebef577e82ff7c4e143debd0bbec99"
+                    }
+                ]
+}

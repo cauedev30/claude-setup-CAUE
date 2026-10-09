@@ -1,0 +1,5 @@
+- [Commits pela conta do Cauê](git-commits-conta-caue.md) — cauedev30 <cauefranco01@gmail.com>, sem Co-Authored-By; no Bash, cd com C:/ pro hook não barrar
+- [Repo da Eme Praia é isolado](eme-praia-repo-isolado.md) — só código sobe pro GitHub da cliente, nada do MazyOS
+- [Um MazyOS por cliente](caue-um-mazyos-por-cliente.md) — pasta raiz com nome de cliente é o padrão dele, não erro
+- [Painel Eme Praia: Fase 2 no ar, login por senha](eme-praia-painel-fase-2-proximo.md) — falta trocar a senha fraca e abrir num celular; plano grátis limita o PBKDF2
+- [Eme Praia: deploy automático](eme-praia-deploy-automatico.md) — push na main publica na Cloudflare via Actions; não fazer deploy manual

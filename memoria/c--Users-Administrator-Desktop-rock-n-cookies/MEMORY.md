@@ -1,0 +1,1 @@
+- [Rock n' Cookies — projeto](rock-n-cookies-project.md) — landing page da cookeria; código vive no repo separado cookie_n_rock-new (não em rock_n_cookies/site, que é abandonado)

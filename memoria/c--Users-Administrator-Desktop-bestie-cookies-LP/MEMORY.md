@@ -1,0 +1,3 @@
+- [Git identity rule](feedback_git_identity.md) — commit client repos as cauedev30 <cauefranco01@gmail.com>, never geniai
+- [Cauê Dev profile](user_caue_dev.md) — solo freelancer, local commerce sites, pricing is his bottleneck
+- [Bestie Cookies project](project_bestie_cookies.md) — WhatsApp cardápio; live on Cloudflare workers.dev; Hellen's three change rounds deployed (latest 60d1e36 Romeo & Juliet rename, 2026-10-06); Cauê orders each deploy

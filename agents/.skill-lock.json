@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "skills": {
+    "computer-use": {
+      "source": "stablyai/orca",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/stablyai/orca.git",
+      "skillPath": "skills/computer-use/SKILL.md",
+      "skillFolderHash": "fab1436f0d73889492279544eadebc9bcc2694b6",
+      "installedAt": "2026-09-15T23:31:46.810Z",
+      "updatedAt": "2026-09-15T23:31:46.810Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-09-15T23:31:50.771Z",
+      "updatedAt": "2026-09-15T23:31:50.771Z"
+    },
+    "orca-cli": {
+      "source": "stablyai/orca",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/stablyai/orca.git",
+      "skillPath": "skills/orca-cli/SKILL.md",
+      "skillFolderHash": "0c90a5b8b422a93ca806af6df3b65445ab5b2072",
+      "installedAt": "2026-09-15T23:33:14.894Z",
+      "updatedAt": "2026-09-15T23:33:14.894Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "droid",
+    "gemini-cli",
+    "github-copilot",
+    "kilo",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed"
+  ]
+}

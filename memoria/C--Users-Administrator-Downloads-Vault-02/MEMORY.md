@@ -1,0 +1,1 @@
+- [Never delete/overwrite without authorization](feedback_no_unilateral_destructive_actions.md) — no unilateral fixes on production systems, even in apparent emergencies

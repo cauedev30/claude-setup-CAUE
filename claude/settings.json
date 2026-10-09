@@ -1,0 +1,203 @@
+{
+  "env": {
+    "OBSIDIAN_VAULT_PATH": "{{VAULT_JSON}}"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "model": "opus",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"{{HOME_JSON}}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"{{HOME_JSON}}\\.claude\\skills\\obsidian-second-brain\\hooks\\load_vault_context.py\""
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"C:\\Program Files\\Git\\usr\\bin\\bash.exe\" \"{{HOME_JSON}}\\.claude\\skills\\obsidian-second-brain\\hooks\\obsidian-bg-agent.sh\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"{{HOME_FWD}}/.claude/hooks/enforce-commit-author.js\"",
+            "timeout": 15,
+            "statusMessage": "Verificando autoria do commit..."
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{{HOME_FWD}}/.orca/agent-hooks/claude-hook.cmd || echo {}",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@superpowers-dev": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-dev": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers"
+      }
+    }
+  },
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-ansi"
+}

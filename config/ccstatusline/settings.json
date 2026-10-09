@@ -1,0 +1,70 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      {
+        "id": "7",
+        "type": "context-bar",
+        "color": "brightBlack"
+      },
+      {
+        "id": "8",
+        "type": "separator"
+      },
+      {
+        "id": "9",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "10",
+        "type": "separator"
+      },
+      {
+        "id": "11",
+        "type": "session-clock",
+        "color": "magenta"
+      },
+      {
+        "id": "12",
+        "type": "separator"
+      },
+      {
+        "id": "13",
+        "type": "session-cost",
+        "color": "brightGreen"
+      },
+      {
+        "id": "14",
+        "type": "separator"
+      },
+      {
+        "id": "15",
+        "type": "session-usage",
+        "color": "yellow"
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  }
+}

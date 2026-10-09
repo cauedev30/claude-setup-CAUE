@@ -1,0 +1,22 @@
+# Programas do setup, instalados pelo instalar.ps1 via winget (um ID por linha).
+# Lista escrita à mão: o exportar.ps1 não mexe aqui. Jogos, drivers e apps
+# pessoais ficaram de fora de propósito.
+
+# Base: o Claude Code e os hooks dependem destes
+Git.Git
+GitHub.cli
+OpenJS.NodeJS.LTS
+Python.Python.3.12
+
+# Ferramentas usadas pelas skills e projetos
+Microsoft.OpenJDK.21
+MiKTeX.MiKTeX
+Cloudflare.cloudflared
+
+# Apps do fluxo de trabalho
+Anthropic.Claude
+Obsidian.Obsidian
+Microsoft.VisualStudioCode
+Warp.Warp
+StablyAI.Orca
+Google.Chrome
