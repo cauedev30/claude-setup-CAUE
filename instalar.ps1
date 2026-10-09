@@ -92,6 +92,14 @@ function Segredo([string]$marca, [string]$para) {
   if ($v) { return $v } else { return $null }
 }
 
+# Roda um programa externo sem o PowerShell 5.1 transformar o stderr dele em erro fatal
+# (com $ErrorActionPreference = 'Stop', até "2>$null" derruba o script). Confira $LASTEXITCODE depois.
+function Externo([scriptblock]$comando) {
+  $antes = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try { & $comando 2>&1 | ForEach-Object { "$_" } } finally { $ErrorActionPreference = $antes }
+}
+
 function ClaudeCmd {
   $c = Get-Command claude -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
   if ($c) { $c.Source } else { $null }
@@ -102,27 +110,33 @@ if (-not $PularProgramas) {
   Passo 'Programas (winget)'
   $ids = Get-Content "$Repo\programas\winget.txt" | ForEach-Object { $_.Trim() } | Where-Object { $_ -and -not $_.StartsWith('#') }
   foreach ($id in $ids) {
-    winget list --id $id --exact --accept-source-agreements --disable-interactivity | Out-Null
+    Externo { winget list --id $id --exact --accept-source-agreements --disable-interactivity } | Out-Null
     if ($LASTEXITCODE -eq 0) { Write-Host "  ok   $id (já instalado)"; continue }
     Write-Host "  ...  $id"
-    winget install --id $id --exact --accept-package-agreements --accept-source-agreements --disable-interactivity | Out-Null
+    Externo { winget install --id $id --exact --accept-package-agreements --accept-source-agreements --disable-interactivity } | Out-Null
     if ($LASTEXITCODE -ne 0) { $Pendencias.Add("winget não instalou $id (código $LASTEXITCODE)") }
   }
   AtualizarPath
   # MiKTeX: baixar pacotes LaTeX sozinho (a skill curriculo-camaleao depende disso)
-  $initexmf = Get-Command initexmf -ErrorAction SilentlyContinue
-  if (-not $initexmf) { $initexmf = Get-Item "$env:LOCALAPPDATA\Programs\MiKTeX\miktex\bin\x64\initexmf.exe" -ErrorAction SilentlyContinue }
-  if ($initexmf) { & $initexmf.Source --set-config-value='[MPM]AutoInstall=1' 2>$null | Out-Null }
+  $initexmf = (Get-Command initexmf -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1).Source
+  if (-not $initexmf) {
+    $f = "$env:LOCALAPPDATA\Programs\MiKTeX\miktex\bin\x64\initexmf.exe"
+    if (Test-Path $f) { $initexmf = $f }
+  }
+  if ($initexmf) {
+    Externo { & $initexmf --set-config-value='[MPM]AutoInstall=1' } | Out-Null
+    Write-Host '  ok   MiKTeX instala pacotes sozinho'
+  } else { $Pendencias.Add('MiKTeX não encontrado; a skill curriculo-camaleao não vai gerar PDF') }
 }
 
 # --- 2. Claude Code CLI ----------------------------------------------------------------
 if (-not $PularClaude) {
   Passo 'Claude Code CLI'
   if (-not (ClaudeCmd)) {
-    npm install -g @anthropic-ai/claude-code
+    Externo { npm install -g @anthropic-ai/claude-code } | Out-Null
     AtualizarPath
   }
-  if (ClaudeCmd) { Write-Host "  ok   $(& (ClaudeCmd) --version)" } else { $Pendencias.Add('Claude Code CLI não ficou no PATH; instale com: npm install -g @anthropic-ai/claude-code') }
+  if (ClaudeCmd) { Write-Host "  ok   $(Externo { & (ClaudeCmd) --version })" } else { $Pendencias.Add('Claude Code CLI não ficou no PATH; instale com: npm install -g @anthropic-ai/claude-code') }
 }
 
 # --- 3. arquivos do ~/.claude ----------------------------------------------------------
@@ -198,10 +212,15 @@ foreach ($e in (Ler "$Repo\externos\externos.json" | ConvertFrom-Json)) {
     Write-Host "  --   $($e.nome) já existe em $alvo; mantido (export estava em $($e.commit.Substring(0,7)))"
     continue
   }
-  git clone --quiet $e.repo $alvo
-  git -C $alvo checkout --quiet $e.commit
+  $saida = Externo { git clone --quiet $e.repo $alvo }
+  if ($LASTEXITCODE -ne 0) { $Pendencias.Add("git clone de $($e.nome) falhou: $($saida -join ' ')"); continue }
+  Externo { git -C $alvo checkout --quiet $e.commit } | Out-Null
+  if ($LASTEXITCODE -ne 0) { $Pendencias.Add("$($e.nome): commit $($e.commit) não existe mais no upstream; ficou no HEAD atual") }
   $patch = Join-Path $Repo "externos\$($e.nome).patch"
-  if (Test-Path $patch) { git -C $alvo apply $patch }
+  if (Test-Path $patch) {
+    Externo { git -C $alvo apply $patch } | Out-Null
+    if ($LASTEXITCODE -ne 0) { $Pendencias.Add("$($e.nome): o patch local não aplicou ($patch)") }
+  }
   Write-Host "  ok   $($e.nome) @ $($e.commit.Substring(0,7))"
 }
 
@@ -224,11 +243,12 @@ if (-not $PularClaude -and (ClaudeCmd)) {
   foreach ($m in $pl.marketplaces) {
     if ($m.nome -eq 'claude-plugins-official') { continue }
     $src = if ($m.source.repo) { $m.source.repo } else { $m.source.url }
-    & $cc plugin marketplace add $src 2>&1 | Out-Null
-    Write-Host "  ok   marketplace $($m.nome) ($src)"
+    Externo { & $cc plugin marketplace add $src } | Out-Null
+    $estado = if ($LASTEXITCODE -eq 0) { 'ok  ' } else { '--  ' }
+    Write-Host "  $estado marketplace $($m.nome) ($src)"
   }
   foreach ($p in $pl.plugins) {
-    & $cc plugin install $p.id --scope user 2>&1 | Out-Null
+    Externo { & $cc plugin install $p.id --scope user } | Out-Null
     if ($LASTEXITCODE -eq 0) { Write-Host "  ok   $($p.id)" } else { $Pendencias.Add("plugin $($p.id) não instalou; rode: claude plugin install $($p.id) --scope user") }
   }
 
@@ -236,7 +256,7 @@ if (-not $PularClaude -and (ClaudeCmd)) {
   $sv = Ler "$Repo\mcp\servidores.json" | ConvertFrom-Json
   foreach ($p in $sv.PSObject.Properties) {
     $nome = $p.Name; $c = $p.Value
-    & $cc mcp get $nome 2>&1 | Out-Null
+    Externo { & $cc mcp get $nome } | Out-Null
     if ($LASTEXITCODE -eq 0) { Write-Host "  --   $nome já cadastrado"; continue }
     $faltou = $false
     $resolver = {
@@ -259,8 +279,8 @@ if (-not $PularClaude -and (ClaudeCmd)) {
       if ($c.headers) { foreach ($q in $c.headers.PSObject.Properties) { $a += '--header', ($q.Name + ': ' + (& $resolver $q.Value "MCP $nome")) } }
     }
     if ($faltou) { $Pendencias.Add("MCP $nome não cadastrado (token não informado); rode o instalar.ps1 de novo quando tiver"); continue }
-    & $cc @a 2>&1 | Out-Null
-    if ($LASTEXITCODE -eq 0) { Write-Host "  ok   $nome" } else { $Pendencias.Add("MCP $nome falhou ao cadastrar") }
+    $saida = Externo { & $cc @a }
+    if ($LASTEXITCODE -eq 0) { Write-Host "  ok   $nome" } else { $Pendencias.Add("MCP $nome falhou ao cadastrar: $($saida -join ' ')") }
   }
 }
 

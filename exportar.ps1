@@ -54,6 +54,17 @@ function Espelhar([string]$origem, [string]$destino, [string[]]$semPastas = @(),
   $global:LASTEXITCODE = 0
 }
 
+# Roda um programa externo sem o PowerShell 5.1 transformar o stderr dele em erro fatal
+# (com $ErrorActionPreference = 'Stop', até "2>$null" derruba o script). Com -soSaida o
+# stderr é descartado, para não sujar o que vai ser gravado (o diff do patch, por exemplo).
+function Externo([scriptblock]$comando, [switch]$soSaida) {
+  $antes = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    if ($soSaida) { & $comando 2>$null } else { & $comando 2>&1 | ForEach-Object { "$_" } }
+  } finally { $ErrorActionPreference = $antes }
+}
+
 function EscJson([string]$s) { $s.Replace('\', '\\') }
 
 # Troca os caminhos desta máquina por marcadores que o instalar.ps1 resolve.
@@ -144,13 +155,15 @@ Gravar "$Repo\plugins\plugins.json" ($plug | ConvertTo-Json -Depth 10)
 $externos = @()
 $osb = "$Claude\skills\obsidian-second-brain"
 if (Test-Path "$osb\.git") {
-  $remoto = (git -C $osb remote get-url origin).Trim()
-  $commit = (git -C $osb rev-parse HEAD).Trim()
+  $remoto = "$(Externo -soSaida { git -C $osb remote get-url origin })".Trim()
+  $commit = "$(Externo -soSaida { git -C $osb rev-parse HEAD })".Trim()
   $externos += [ordered]@{ nome = 'obsidian-second-brain'; destino = '.claude/skills/obsidian-second-brain'; repo = $remoto; commit = $commit }
-  $sujo = git -C $osb status --porcelain
+  $sujo = Externo -soSaida { git -C $osb status --porcelain }
   if ($sujo) {
-    Gravar "$Repo\externos\obsidian-second-brain.patch" (((git -C $osb diff HEAD --binary) -join "`n") + "`n")
-    $novos = git -C $osb ls-files --others --exclude-standard
+    # O git grava o patch direto: passar pelo pipeline do PowerShell estragaria os acentos.
+    New-Item -ItemType Directory -Force "$Repo\externos" | Out-Null
+    Externo -soSaida { git -C $osb diff HEAD --binary "--output=$Repo\externos\obsidian-second-brain.patch" } | Out-Null
+    $novos = Externo -soSaida { git -C $osb ls-files --others --exclude-standard }
     if ($novos) { Write-Warning "obsidian-second-brain tem arquivos novos fora do git (não exportados): $($novos -join ', ')" }
   }
 }
@@ -201,10 +214,14 @@ if ($achados) {
 Write-Host 'Varredura de segredos: limpa.' -ForegroundColor Green
 
 if ($Publicar) {
-  git -C $Repo add -A
-  if (git -C $Repo status --porcelain) {
-    git -C $Repo commit -m ("chore: exporta setup em " + (Get-Date -Format 'yyyy-MM-dd HH:mm'))
-    git -C $Repo push
+  Externo { git -C $Repo add -A } | Out-Null
+  if (Externo -soSaida { git -C $Repo status --porcelain }) {
+    $msg = "chore: exporta setup em " + (Get-Date -Format 'yyyy-MM-dd HH:mm')
+    Externo { git -C $Repo commit -q -m $msg } | Out-Host
+    if ($LASTEXITCODE -ne 0) { throw "git commit falhou ($LASTEXITCODE)" }
+    Externo { git -C $Repo push -q } | Out-Host
+    if ($LASTEXITCODE -ne 0) { throw "git push falhou ($LASTEXITCODE); o commit ficou só local" }
+    Write-Host "Publicado: $(Externo -soSaida { git -C $Repo log -1 --format='%h %s' })" -ForegroundColor Green
   } else {
     Write-Host 'Nada mudou desde o último export.'
   }
