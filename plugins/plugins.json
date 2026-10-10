@@ -18,8 +18,8 @@
     "plugins":  [
                     {
                         "id":  "frontend-design@claude-plugins-official",
-                        "versao":  "315c4e48967d",
-                        "commit":  "315c4e48967d9541c29c3c656441dded353ca7aa"
+                        "versao":  "ac996c0dde7f",
+                        "commit":  "ac996c0dde7fb2a9f805cd5277ffc95ecd44a321"
                     },
                     {
                         "id":  "superpowers@superpowers-dev",

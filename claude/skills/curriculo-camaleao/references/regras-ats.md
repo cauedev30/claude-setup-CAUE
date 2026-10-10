@@ -8,11 +8,12 @@
   sombreamento, cores de fonte diferentes de preto, ícones, símbolos além do
   bullet simples, texto escondido/branco.
 - **Fonte:** preta, tamanho 10pt, sem serifas exageradas (`lmodern`).
-- **Seções padronizadas** (ou equivalentes em inglês): Resumo Profissional,
-  Experiência Profissional, Competências Técnicas, Formação Acadêmica,
-  Certificações, Idiomas.
+- **Seções padronizadas** (ou equivalentes em inglês), sempre nesta ordem e
+  sem seção extra: Resumo Profissional, Experiência Profissional,
+  Competências Técnicas, Formação Acadêmica, Certificações, Idiomas. É a
+  estrutura obrigatória do `template.tex`.
 - **Contato no corpo do documento**, nunca em header/footer.
-- **Datas:** sempre `MM/AAAA` ou `Mês/AAAA` (ex.: `11/2025 — Presente`),
+- **Datas:** sempre `MM/AAAA` ou `Mês/AAAA` (ex.: `11/2025 -- Presente`),
   consistentes no documento inteiro. Evite datas por extenso sem numeral.
 - **Cargos e empresas:** em linhas distintas e facilmente parseáveis; evite
   blocos de texto corrido.
@@ -33,6 +34,9 @@
 - **Quantifique:** prefira bullets com números — percentuais, tempo
   economizado, custo reduzido, clientes atendidos, tokens, produtos,
   usuários.
+- **Primeira pessoa no documento inteiro**, inclusive no Resumo
+  Profissional ("Sou", "Construo", "Desenvolvo"); nunca terceira pessoa
+  ("constrói", "desenvolve", "atua").
 - **Verbos de ação** no início de cada bullet (Desenvolvi, Arquitetei,
   Reduzi, Otimizei, Liderei, Padronizei, Integrei...).
 - **Foco em resultado mensurável**, não em tarefa executada.
@@ -63,6 +67,7 @@ validação cruzada por completo:
    - [ ] Bullets em Contexto → Ação → Resultado (CAR).
    - [ ] Resultados quantificados sempre que possível.
    - [ ] Verbos de ação no início dos bullets.
+   - [ ] Primeira pessoa no documento inteiro, inclusive no Resumo.
    - [ ] Sem clichês genéricos sem comprovação.
 4. **Scoring estimado (0–100):**
    - 50% overlap de hard skills/tecnologias exigidas.

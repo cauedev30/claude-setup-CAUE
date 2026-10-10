@@ -1,0 +1,147 @@
+% Modelo base — Currículo Camaleão
+% Use o preâmbulo abaixo SEM alterar a estrutura. Substitua apenas o conteúdo
+% entre os marcadores de seção (%% =========================).
+% Regras de formatação por trás deste preâmbulo: ver regras-ats.md.
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=black
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+\setlist[itemize]{leftmargin=1.3em, itemsep=0.2em}
+
+\titleformat{\section}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {}
+  []
+
+\titlespacing*{\section}{0pt}{1em}{0.3em}
+
+\begin{document}
+
+\textbf{\Large Cauê Franco} \\
+AI Full Stack Engineer (Agentes de LLM | Python | TypeScript)
+
+João Pessoa - Paraíba, Brasil \\
+Telefone: +55 83 98746-8188 \\
+Email: cauefranco01@gmail.com \\
+LinkedIn: https://www.linkedin.com/in/cauefranco01 \\
+GitHub: https://github.com/cauedev30
+
+% =========================
+\section*{Resumo Profissional}
+
+AI Full Stack Engineer, construo agentes de LLM e o produto inteiro em volta
+deles: back-end, interface, integrações e deploy. Tenho experiência com
+agentes de IA e sistemas multiagentes, Retrieval-Augmented Generation (RAG),
+grounding em base de conhecimento, function calling, MCP servers e evals com
+controle de custo de tokens. Desenvolvo em Python (FastAPI, SQLAlchemy) e
+TypeScript (React, Next.js, Node.js) sistemas que rodam em produção: construí
+de ponta a ponta um agente de atendimento no WhatsApp que tornou 100\%
+automática a triagem antes manual, e automatizei o provisionamento de cerca de
+20 contas Chatwoot com n8n e Supabase. Trabalho com workflow agêntico (Claude
+Code com skills e hooks), PostgreSQL, Docker e CI/CD com GitHub Actions.
+
+% =========================
+\section*{Experiência Profissional}
+
+\textbf{GeniAI} \\
+Cargo: Generative AI Engineer (efetivado em 07/2026; antes, Especialista em Automação, estágio) \\
+Período: 11/2025 -- Presente \\
+Local: João Pessoa, PB
+
+\begin{itemize}
+\item Construí de ponta a ponta um agente LLM de atendimento no WhatsApp que
+identifica o cliente, abre o ticket e responde com grounding em uma base de
+conhecimento curada, entendendo áudio e imagem, e o produto em volta dele:
+back-end em Python, FastAPI e PostgreSQL, front-end em React e Next.js com
+kanban de tickets e painel de monitoramento e indicadores, integração com a
+API da OpenAI e testes automatizados com Pytest e Vitest; a triagem, que era
+manual, passou a ser 100\% automática.
+\item Automatizei o provisionamento de atendentes em cerca de 20 contas
+Chatwoot de uma rede de franquias de saúde com n8n e Supabase (PostgreSQL):
+fluxo idempotente e parametrizado, via APIs REST e webhooks, que cria usuário,
+times, etiquetas, regras de roteamento e inboxes, confere banco e Chatwoot
+antes de escrever e registra cada execução.
+\item Aplico workflow agêntico como método: harness em volta do modelo
+(skills, hooks, guardrails, evals e contexto versionado), com cada decisão
+técnica ligada ao planejamento do projeto e a um resultado de negócio.
+\end{itemize}
+
+\textbf{Desenvolvedor Autônomo / Freelancer} \\
+Cargo: Desenvolvedor Full Stack \\
+Período: 07/2026 -- Presente \\
+Local: Remoto, João Pessoa, PB
+
+\begin{itemize}
+\item Desenvolvi um site de pedidos para restaurante em Next.js (JavaScript),
+publicado no edge da Cloudflare com Cloudflare Workers.
+\item Implementei painel autenticado para o cliente organizar os pedidos,
+otimizando o fluxo de trabalho da operação.
+\end{itemize}
+
+\textbf{Fábrica de Software UBTech Office (Unipê)} \\
+Cargo: Desenvolvedor Back-end (estágio) \\
+Período: 08/2025 -- 11/2025 \\
+Local: João Pessoa, PB
+
+\begin{itemize}
+\item Trabalhei no desenvolvimento do back-end de um sistema de gestão
+operacional para um órgão governamental da Paraíba, utilizando Python e Django
+Framework, centralizando informações críticas.
+\item Modelei e estruturei bancos de dados relacionais com PostgreSQL e
+SQLite3, garantindo integridade, segurança e performance no acesso aos dados
+institucionais.
+\end{itemize}
+
+% =========================
+\section*{Competências Técnicas}
+
+\textbf{IA e Agentes:} Agentes de IA e sistemas multiagentes, LLMs,
+Retrieval-Augmented Generation (RAG), embeddings, bancos de dados vetoriais,
+grounding, function calling e tool use, MCP (Model Context Protocol), prompt e
+context engineering, evals, controle de custo de tokens, entrada multimodal
+(áudio e imagem), API da OpenAI \\
+\textbf{Automação e Integração:} n8n, Make, Chatwoot, APIs REST, webhooks \\
+\textbf{Linguagens:} Python, TypeScript, JavaScript \\
+\textbf{Full Stack:} FastAPI, SQLAlchemy, Django, Flask, Node.js, React,
+Next.js, Clean Architecture \\
+\textbf{Banco de Dados:} PostgreSQL, SQLite, Supabase (Row Level Security) \\
+\textbf{Cloud e DevOps:} Docker, Dokku, Cloudflare Workers, GitHub Actions
+(CI/CD), Git, GitHub \\
+\textbf{Testes:} Pytest, Vitest, Playwright \\
+\textbf{Ferramentas e Metodologias:} Claude Code: desenvolvimento agêntico
+(harness, guardrails, contexto versionado, evals, policies), critério de aceite
+executável
+
+% =========================
+\section*{Formação Acadêmica}
+
+\textbf{Centro Universitário Unipê} \\
+Curso: Análise e Desenvolvimento de Sistemas \\
+Período: 2025 -- 2027 \\
+Status: Em andamento
+
+% =========================
+\section*{Idiomas}
+
+Português: Nativo \\
+Inglês: Intermediário/Avançado
+
+\end{document}

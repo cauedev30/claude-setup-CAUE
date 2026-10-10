@@ -12,12 +12,20 @@ obrigatória.
 
 ## Arquivos desta skill
 
-- `references/candidato.md` — base de conhecimento fixa do candidato (Daniel
-  Vieira). Fonte única de verdade. Edite este arquivo quando o usuário
+- `references/candidato.md` — base de conhecimento fixa do candidato (Cauê
+  Franco). Fonte única de verdade. Edite este arquivo quando o usuário
   informar um emprego, skill ou certificação nova, ou corrigir um dado —
   nunca guarde esse tipo de atualização só na conversa.
-- `references/template.tex` — preâmbulo e esqueleto LaTeX compatível com ATS.
-  Use sem alterar a estrutura; preencha só as seções de conteúdo.
+- `references/template.tex` — **estrutura obrigatória** de todo currículo,
+  copiada do currículo "Geral" do Daniel a pedido do Cauê (09/10/2026):
+  nome + linha de título, contato, Resumo, Experiência (empresa / Cargo /
+  Período / Local + bullets), Competências Técnicas nas 8 categorias fixas,
+  Formação, Certificações, Idiomas. Nunca acrescente, remova ou reordene
+  seção; o que muda de uma vaga para outra é só o conteúdo. Única exceção:
+  sem certificação na base, a seção Certificações sai.
+- `references/curriculo-base.tex` — **currículo base aprovado pelo Cauê**
+  (09/10/2026, versão geral). Todo currículo novo parte de uma cópia dele.
+  Se um dado da base mudar, atualize este arquivo e o `candidato.md` juntos.
 - `references/regras-ats.md` — regras de formatação ATS e o checklist de
   validação obrigatório (seção final).
 
@@ -31,7 +39,7 @@ no perfil sob outro nome — e priorize as entregas mais próximas do cargo.
 
 **Reestruturar, reordenar, reenquadrar e dar ênfase: sim. Inventar: não.**
 Nunca invente empregos em outras empresas, experiências freelance,
-certificações, formações ou resultados. Na experiência autônoma, use *só*
+certificações, formações ou resultados. Nos projetos, use *só*
 tecnologias e atribuições já comprovadas em outro lugar da base — se a vaga
 pede uma tecnologia que não existe em nenhum lugar do perfil real, omita ou
 trate como "familiaridade em estudo" quando plausível; nunca como experiência
@@ -61,9 +69,12 @@ destaque, 2–3 soft skills realmente exigidas, nível de senioridade, idioma da
 contratação.
 
 ### 2. Definir a estratégia de alinhamento
-- **Título no topo:** escolha uma variação do cargo que encaixe vaga +
-  experiência real (ex.: "Engenheiro de IA Aplicada", "Desenvolvedor Full
-  Stack").
+- **Título no topo:** o padrão é "AI Full Stack Engineer" (posicionamento
+  do candidato, ver `candidato.md`). Varie só quando a vaga usar outro nome,
+  sempre dentro do eixo IA aplicada + full stack (ex.: "AI Engineer",
+  "Generative AI Engineer").
+- **Direção do currículo inteiro:** resumo, bullets, projetos e competências
+  puxam para AI Full Stack Engineer, não só o título.
 - **Resumo profissional:** 3–4 linhas densas em keywords, com stack principal
   e valor mensurável.
 - **Experiências:** mantenha todas as reais; reescreva bullets em
@@ -72,18 +83,30 @@ contratação.
   sentido (ex.: "vector database" → cite "Pinecone" junto com "banco
   vetorial"); em vagas mais sênior, puxe liderança técnica/arquitetura/escala,
   em vagas mais hands-on, puxe entrega/integração/stack.
-- **Experiência autônoma como complemento estratégico:** se uma tecnologia da
-  vaga não aparece nas experiências Smartspace/Inteligentte/Quinze, verifique
-  se faz sentido nos projetos independentes — só adicione se já existir na
-  base real.
+- **Projetos dentro das experiências:** não existe seção Projetos. O agente
+  de atendimento e o provisionamento no Chatwoot viram bullets da GeniAI; o
+  site de pedidos vira bullet da experiência "Desenvolvedor Autônomo /
+  Freelancer". Se uma tecnologia da vaga não aparece em nenhum deles, ela
+  não entra como experiência.
 - **Competências técnicas:** só o que está na vaga ou é justificável pela
   experiência real; agrupe por categorias compatíveis com a vaga.
 - **Formação/certificações:** mantenha as reais, reordene priorizando o que é
   mais próximo da vaga.
 
 ### 3. Redigir o `.tex`
-Preencha `references/template.tex` sem alterar o preâmbulo/estrutura. Siga
-as regras de formatação e conteúdo em `references/regras-ats.md`.
+Copie `references/curriculo-base.tex` e adapte só o conteúdo para a vaga,
+sem alterar preâmbulo nem estrutura. Nas palavras do Cauê (09/10/2026): "não
+sejam inventadas mentiras, apenas adaptações do meu currículo base para a
+vaga. Isso significa alterar palavras-chave e colocar os meus projetos
+voltados ao que a vaga solicita." Na prática, pode:
+- trocar o que vem entre parênteses na linha de título;
+- reescrever o resumo e os bullets com os termos exatos da vaga;
+- reordenar bullets e dar mais ênfase ao lado de cada projeto que a vaga pede;
+- reordenar e enxugar as competências, priorizando as da vaga.
+
+Não pode: acrescentar empresa, cargo, projeto, tecnologia, número ou
+resultado que não esteja no `curriculo-base.tex` ou no `candidato.md`.
+Siga as regras de formatação e conteúdo em `references/regras-ats.md`.
 
 ### 4. Validar (obrigatório, nunca pule)
 Rode o checklist completo da seção "Validação ATS obrigatória" de
@@ -104,7 +127,7 @@ houve).
 
 **Etapa 3 — Entrega final (PDF, não o `.tex` cru):**
 1. Salve o `.tex` em `~/Documents/curriculo-camaleao-build/` com nome
-   `Daniel_Vieira_<Empresa>_<Cargo>.tex`.
+   `Caue_Franco_<Empresa>_<Cargo>.tex`.
 2. Compile com `pdflatex` (TeX Live; se não existir: no Mac, `brew install
    --cask basictex`; no Fedora, `sudo dnf install texlive-scheme-medium`). Instale packages sob demanda;
    rode duas vezes para resolver referências.
@@ -148,7 +171,7 @@ gravar — não decida sozinho.
 - Não invente dados; tudo vem de `candidato.md` ou de confirmação explícita
   do usuário.
 - Não invente experiências em outras empresas.
-- Na experiência autônoma, não invente tecnologias, projetos, clientes ou
+- Nos projetos, não invente tecnologias, projetos, clientes ou
   resultados fora da base — reenquadre o que já existe, nunca crie stack
   nova só porque a vaga pede.
 - Não altere datas reais do candidato.
@@ -163,7 +186,7 @@ gravar — não decida sozinho.
 
 | Erro | Correção |
 |---|---|
-| Adicionar tecnologia nova na experiência autônoma "porque a vaga pede" | Só use o que já está em `candidato.md`; senão, omita ou marque como familiaridade |
+| Adicionar tecnologia nova nos projetos "porque a vaga pede" | Só use o que já está em `candidato.md`; senão, omita ou marque como familiaridade |
 | Entregar o `.tex` sem compilar | O produto final é o PDF em `~/Downloads/`, não o código-fonte |
 | Pular a validação ATS "porque o currículo já ficou bom" | Rode o checklist completo mesmo assim; é o que garante que passe no parser |
 | Gerar currículo sem ter a descrição da vaga completa | Pergunte pelos requisitos/stack/senioridade antes de escrever qualquer bullet |
@@ -171,13 +194,14 @@ gravar — não decida sozinho.
 
 ## Apêndice — instalação do Cauê (08/10/2026)
 
-- Skill copiada sem alteração de `github.com/dv-dev1/claude-setup` (commit
-  `4e94455`); só a Etapa 3 e este apêndice foram acrescentados.
-- **`references/candidato.md` ainda é a base do Daniel Vieira.** O Cauê vai
-  montar a base dele depois. Até lá, antes de gerar qualquer currículo,
-  pergunte de quem é: se for do Cauê e a base dele ainda não existir, pare e
-  monte a base primeiro, com dados que ele mesmo informar — nunca adapte a
-  base do Daniel para ele.
+- Skill copiada de `github.com/dv-dev1/claude-setup` (commit `4e94455`).
+  A base original do Daniel Vieira está lá, se um dia for preciso.
+- 09/10/2026: `references/candidato.md` passou a ser a base do Cauê Franco
+  (substituição completa, a pedido dele). O pipeline foi ajustado para as
+  experiências dele (GeniAI/UBTech/freelance).
+- 09/10/2026: o `template.tex` passou a reproduzir exatamente a estrutura do
+  PDF `Daniel_Vieira_Geral_Engenheiro_IA_Automacao_n8n.pdf` ("deixa esse
+  currículo como base obrigatória; o que vai mudar são as informações").
 - Cuidado no `template.tex`: uma linha terminada em `\\` seguida de outra que
   começa com `[` quebra a compilação ("Missing number"), porque o LaTeX lê
   `\\[...]` como espaçamento. Só acontece com os placeholders entre colchetes;
