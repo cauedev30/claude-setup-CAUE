@@ -13,18 +13,30 @@
                                             "source":  "github",
                                             "repo":  "obra/superpowers"
                                         }
+                         },
+                         {
+                             "nome":  "claude-code-warp",
+                             "source":  {
+                                            "source":  "github",
+                                            "repo":  "warpdotdev/claude-code-warp"
+                                        }
                          }
                      ],
     "plugins":  [
                     {
                         "id":  "frontend-design@claude-plugins-official",
-                        "versao":  "ac996c0dde7f",
-                        "commit":  "ac996c0dde7fb2a9f805cd5277ffc95ecd44a321"
+                        "versao":  "d1adba47161a",
+                        "commit":  "d1adba47161a271799de7b548225d929310046bd"
                     },
                     {
                         "id":  "superpowers@superpowers-dev",
                         "versao":  "6.1.1",
                         "commit":  "d884ae04edebef577e82ff7c4e143debd0bbec99"
+                    },
+                    {
+                        "id":  "warp@claude-code-warp",
+                        "versao":  "2.4.0",
+                        "commit":  "53ab8d63ef74d7653002444762812d2fb5639eee"
                     }
                 ]
 }

@@ -1,0 +1,1 @@
+- [Projeto único e isolado](projeto-unico-isolado.md) — só o painel de BI da ADR; nada do simulador antigo

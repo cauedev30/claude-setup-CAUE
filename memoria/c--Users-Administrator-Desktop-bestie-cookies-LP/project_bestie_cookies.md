@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4970577f-6e28-4820-bb6b-9f623b733afa
-  modified: 2026-09-27T03:29:24.951Z
+  modified: 2026-10-12T02:49:42.622Z
 ---
 
 Bestie Cookies is a cookie shop in João Pessoa - PB that takes orders only via WhatsApp. Cauê built them a digital cardápio (menu) landing page: browse cookies → build a cart → "Finalizar no WhatsApp" opens `wa.me` with the order pre-filled. No backend, no login, no payment — cart persists in `localStorage`.
@@ -32,3 +32,9 @@ WhatsApp number `558387178205` — the checkout flow was tested live and confirm
 **Update 2026-09-29:** third Hellen round ("tirar o tudo claro do primeiro impacto") pushed + deployed (9596b4f, version 3c0ef773): header is now solid marrom-escuro with a creme logo variant (`public/logo/bestie-logo-header-creme.png`, footer and /hoje keep the brown logo), and the "Menu" title is a brown label with creme text + gold hard shadow (gold underline hidden there). Deploy gotcha: a running `next dev` spawns workerd that locks `.open-next`, making `cf:deploy` fail with EPERM — deploy from a fresh `git clone` of the repo in the scratchpad (npm ci + cf:deploy) instead of killing the user's dev server.
 
 **Update 2026-10-06:** "Romeu & Julieta" renamed to "Romeo & Juliet" on Hellen's request (name only; id `bestie-romeu-e-julieta-cookie` and image filename kept). Committed 60d1e36 and deployed (version e3db6ea5) on Cauê's explicit order, pushed to GitHub same day. Auto mode blocks `cf:deploy` until Cauê confirms in the chat. The identity hook also misreads a quoted `cd "…Bestie Cookies…"` path, so run git commands from the site dir without a `cd`.
+
+**Update 2026-10-10:** "Bestie Kinder Bueno Cookie" renamed to "Bestie Black Bueno Cookie" (id `bestie-kinder-bueno-cookie` kept, like the Romeo & Juliet rename), committed, pushed and deployed (2342ca5, version 793a392b). Description still mentions "Kinder Bueno" twice.
+
+**Update 2026-10-10 (later):** new cookie "Bestie Arretado Cookie" (paçoca, R$22,50, id `bestie-arretado-cookie`, photo `public/cookies/arretado.jpg`) committed, pushed and deployed (e254e98, version fca24a65). Menu now has 9 cookies; two tests hardcode the available count (StorePage.test.jsx "Adicionar" buttons, app/hoje/page.test.jsx "N cookies") and must change whenever a cookie is added/removed.
+
+**Update 2026-10-11:** removed the `/hoje` panel footnote ("Na virada da meia-noite a loja fecha sozinha…") and its `.footnote` CSS. Committed, pushed and deployed on Cauê's order (ecfd54d, version a134335a); live chunk verified without the phrase.

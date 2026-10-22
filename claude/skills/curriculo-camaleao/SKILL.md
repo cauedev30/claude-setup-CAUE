@@ -88,6 +88,9 @@ contratação.
   site de pedidos vira bullet da experiência "Desenvolvedor Autônomo /
   Freelancer". Se uma tecnologia da vaga não aparece em nenhum deles, ela
   não entra como experiência.
+- **Ferramentas e Metodologias:** sempre começa com a frase obrigatória
+  `Claude Code: workflow agêntico` (pedido do Cauê, 21/10/2026), em toda
+  vaga, com ou sem IA; o resto da categoria se adapta.
 - **Competências técnicas:** só o que está na vaga ou é justificável pela
   experiência real; agrupe por categorias compatíveis com a vaga.
 - **Formação/certificações:** mantenha as reais, reordene priorizando o que é
@@ -127,7 +130,8 @@ houve).
 
 **Etapa 3 — Entrega final (PDF, não o `.tex` cru):**
 1. Salve o `.tex` em `~/Documents/curriculo-camaleao-build/` com nome
-   `Caue_Franco_<Empresa>_<Cargo>.tex`.
+   `Caue_Franco_<Empresa>.tex` (sem acento, para o `pdflatex` não tropeçar
+   no nome do arquivo; sem o cargo, a pedido do Cauê em 21/10/2026).
 2. Compile com `pdflatex` (TeX Live; se não existir: no Mac, `brew install
    --cask basictex`; no Fedora, `sudo dnf install texlive-scheme-medium`). Instale packages sob demanda;
    rode duas vezes para resolver referências.
@@ -138,7 +142,10 @@ houve).
    `"$LOCALAPPDATA/Programs/MiKTeX/miktex/bin/x64/pdflatex.exe"`. Rode com
    `-interaction=nonstopmode`. O aviso "security risk: running with elevated
    privileges" é inofensivo.
-3. Copie o PDF resultante para `~/Downloads/` com o mesmo nome base.
+3. Copie o PDF resultante para `~/Downloads/` renomeado para
+   `Cauê_Franco_<Empresa>.pdf`: nome com acento e só a empresa, sem o cargo
+   (pedido do Cauê, 21/10/2026). Se já existir um PDF com esse nome (segunda
+   vaga na mesma empresa), pergunte antes de sobrescrever.
 4. Entregue: caminho do PDF, "Validação ATS aprovada" + nota estimada, e um
    alerta se a nota ficou abaixo de 85 (com a lista dos gaps reais — o
    usuário decide se envia assim mesmo).

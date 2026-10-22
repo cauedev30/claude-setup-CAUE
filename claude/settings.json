@@ -1,6 +1,7 @@
 {
   "env": {
-    "OBSIDIAN_VAULT_PATH": "{{VAULT_JSON}}"
+    "OBSIDIAN_VAULT_PATH": "{{VAULT_JSON}}",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "attribution": {
     "commit": "",
@@ -51,6 +52,15 @@
       }
     ],
     "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"{{HOME_JSON}}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"{{HOME_JSON}}\\.claude\\hooks\\output-budget.py\"",
+            "timeout": 10
+          }
+        ]
+      },
       {
         "hooks": [
           {
@@ -182,7 +192,8 @@
   },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
-    "superpowers@superpowers-dev": true
+    "superpowers@superpowers-dev": true,
+    "warp@claude-code-warp": false
   },
   "extraKnownMarketplaces": {
     "superpowers-dev": {
@@ -190,12 +201,18 @@
         "source": "github",
         "repo": "obra/superpowers"
       }
+    },
+    "claude-code-warp": {
+      "source": {
+        "source": "github",
+        "repo": "warpdotdev/claude-code-warp"
+      }
     }
   },
   "effortLevel": "high",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "xhigh"
+      "effortLevel": "medium"
     }
   },
   "skipDangerousModePermissionPrompt": true,

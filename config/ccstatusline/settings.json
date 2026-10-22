@@ -5,29 +5,32 @@
       {
         "id": "7",
         "type": "context-bar",
-        "color": "brightBlack"
+        "color": "cyan"
       },
       {
         "id": "8",
-        "type": "separator"
+        "type": "separator",
+        "color": "brightBlack"
       },
       {
         "id": "9",
         "type": "model",
-        "color": "cyan"
+        "color": "magenta"
       },
       {
         "id": "10",
-        "type": "separator"
+        "type": "separator",
+        "color": "brightBlack"
       },
       {
         "id": "11",
         "type": "session-clock",
-        "color": "magenta"
+        "color": "yellow"
       },
       {
         "id": "12",
-        "type": "separator"
+        "type": "separator",
+        "color": "brightBlack"
       },
       {
         "id": "13",
@@ -36,12 +39,13 @@
       },
       {
         "id": "14",
-        "type": "separator"
+        "type": "separator",
+        "color": "brightBlack"
       },
       {
         "id": "15",
         "type": "session-usage",
-        "color": "yellow"
+        "color": "brightBlue"
       }
     ],
     [],
