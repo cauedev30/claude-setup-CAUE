@@ -1,3 +1,3 @@
 - [Git identity rule](feedback_git_identity.md) — commit client repos as cauedev30 <cauefranco01@gmail.com>, never geniai
 - [Cauê Dev profile](user_caue_dev.md) — solo freelancer, local commerce sites, pricing is his bottleneck
-- [Bestie Cookies project](project_bestie_cookies.md) — WhatsApp cardápio; live on Cloudflare workers.dev; Hellen's three change rounds deployed (latest ecfd54d panel footnote removed, 2026-10-11); Cauê orders each deploy
+- [Bestie Cookies project](project_bestie_cookies.md) — WhatsApp cardápio; live on Cloudflare workers.dev; Hellen's three change rounds deployed (latest 3bf9940 Nutella na Lata launch + temp video, 2026-10-24); Cauê orders each deploy

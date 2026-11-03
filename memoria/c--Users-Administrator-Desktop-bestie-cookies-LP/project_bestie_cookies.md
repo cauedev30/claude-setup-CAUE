@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 4970577f-6e28-4820-bb6b-9f623b733afa
-  modified: 2026-10-12T02:49:42.622Z
+  modified: 2026-11-01T03:52:19.766Z
 ---
 
 Bestie Cookies is a cookie shop in João Pessoa - PB that takes orders only via WhatsApp. Cauê built them a digital cardápio (menu) landing page: browse cookies → build a cart → "Finalizar no WhatsApp" opens `wa.me` with the order pre-filled. No backend, no login, no payment — cart persists in `localStorage`.
@@ -38,3 +38,7 @@ WhatsApp number `558387178205` — the checkout flow was tested live and confirm
 **Update 2026-10-10 (later):** new cookie "Bestie Arretado Cookie" (paçoca, R$22,50, id `bestie-arretado-cookie`, photo `public/cookies/arretado.jpg`) committed, pushed and deployed (e254e98, version fca24a65). Menu now has 9 cookies; two tests hardcode the available count (StorePage.test.jsx "Adicionar" buttons, app/hoje/page.test.jsx "N cookies") and must change whenever a cookie is added/removed.
 
 **Update 2026-10-11:** removed the `/hoje` panel footnote ("Na virada da meia-noite a loja fecha sozinha…") and its `.footnote` CSS. Committed, pushed and deployed on Cauê's order (ecfd54d, version a134335a); live chunk verified without the phrase.
+
+**Update 2026-10-24:** launch "Bestie Nutella Cookie na Lata" (R$ 44,90, id `bestie-nutella-na-lata`) in a new first category "Assado na Lata" (category order = array order in `data/products.js`), with `isNew` (tilted "Novidade" tag on the card corner) and `videoTeaser` ("Confira a novidade!" button scrolling to `#video`). Category titles are now bordered pills. The video section now plays `public/video/assado-na-lata.mp4` (iPhone HDR HEVC converted to H.264 SDR via a scratchpad `imageio-ffmpeg` venv — no ffmpeg installed on the machine). It stays 1–2 weeks: to bring the croc video back, switch `ACTIVE_VIDEO` in `components/Croc.js` and drop `videoTeaser` from the product. Committed, pushed and deployed (3bf9940, version ad2fda8a). Cauê prefers to check visuals himself on his phone (LAN preview via `next start -p 3123` at 192.168.0.7) rather than Claude driving Chrome.
+
+**Update 2026-10-31:** new cookie "Bestie Blue Lemon Cookie" (limão siciliano + mirtilo, R$ 31,90, id `bestie-blue-lemon-cookie`, photo `public/cookies/blue-lemon.jpg`, `isNew` tag) pinned as the **first** item of the "Cookies" category (Cauê asked for the top, not the end). Committed, pushed and deployed (e113b15, version b937f8e1); Cauê checked it live and approved. Cookie count tests now expect 10 (StorePage "Adicionar" and `/hoje` "10 cookies"). Cauê told Claude not to use Claude in Chrome — verify live with curl instead. Still open: the Nutella na Lata video was meant to stay 1–2 weeks from 2026-10-24, so the `ACTIVE_VIDEO` swap back to the croc video (and dropping `videoTeaser`) is due around now; the "Novidade" tag on Nutella na Lata and Blue Lemon will also need removing at some point.
