@@ -30,7 +30,8 @@
 ## Regras de conteúdo
 
 - **Veracidade absoluta:** nenhum fato inventado; tudo vem de
-  `candidato.md` ou de confirmação explícita do usuário na conversa.
+  `curriculo-base.tex` ou de confirmação explícita do usuário para a vaga
+  em questão (e essa confirmação não vai para a base).
 - **Quantifique:** prefira bullets com números — percentuais, tempo
   economizado, custo reduzido, clientes atendidos, tokens, produtos,
   usuários.
