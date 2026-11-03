@@ -7,7 +7,7 @@
     "commit": "",
     "pr": ""
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -52,15 +52,6 @@
       }
     ],
     "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"{{HOME_JSON}}\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\" \"{{HOME_JSON}}\\.claude\\hooks\\output-budget.py\"",
-            "timeout": 10
-          }
-        ]
-      },
       {
         "hooks": [
           {
@@ -212,7 +203,10 @@
   "effortLevel": "high",
   "modelSettings": {
     "claude-opus-5-5": {
-      "effortLevel": "medium"
+      "effortLevel": "high"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "high"
     }
   },
   "skipDangerousModePermissionPrompt": true,
